@@ -2,51 +2,67 @@ using System;
 
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        Console.WriteLine("��� ����� 3: " + Cube(3));
-        Console.WriteLine("������� ����� 4: " + Square(4));
-        Console.WriteLine("����� 5 � 10: " + Sum(5, 10));
-        Console.WriteLine("��������� (10 - 5) / 2: " + ari(10, 5, 2));
-        Console.WriteLine("���� ������ ��� 3: " + akchurin(3));
-        Console.WriteLine("������� �� 7 � 3: " + Min(7, 3));
+        int number = 15;
+
+        Console.WriteLine($"Куб числа {number}: {Cube(number)}");
+        Console.WriteLine($"Квадрат числа {number}: {Square(number)}");
+        Console.WriteLine($"Сумма {number} и 3: {Sum(number, 3)}");
+        Console.WriteLine("Результат (10 - 5) / 2: " + Calculate(10, 5, 2));
+        Console.WriteLine("День недели для 3: " + GetDayOfWeek(3));
+        Console.WriteLine("Минимальное из 10 и 5: " + Min(10, 5));
+        
+        Console.ReadKey(); // Ожидание нажатия клавиши
     }
-    static double Cube(double number)
+
+    // 1. Функция, возвращающая куб числа
+    static int Cube(int x)
     {
-        return Math.Pow(number, 3);
+        return x * x * x;
     }
-    static double Square(double number)
+
+    // 2. Функция, возвращающая квадрат числа
+    static int Square(int x)
     {
-        return Math.Pow(number, 2);
+        return x * x;
     }
-    static double Sum(double a, double b)
+
+    // 3. Функция, возвращающая сумму двух чисел
+    static int Sum(int x, int y)
     {
-        return a + b;
+        return x + y;
     }
-    static double ari(double a, double b, double c)
+
+    // 4. Функция, отнимающая от первого числа второе и делящая на третье
+    static double Calculate(int a, int b, int c)
     {
         if (c == 0)
         {
-            Console.WriteLine("������ �� ���� ������.");
+            throw new DivideByZeroException("Делить на ноль нельзя.");
         }
-        return (a - b) / c;
+        return (a - b) / (double)c;
     }
-    static string akchurin(int day)
+
+    // 5. Функция, возвращающая день недели на русском языке
+    static string GetDayOfWeek(int day)
     {
         switch (day)
         {
-            case 1: return "�����������";
-            case 2: return "�������";
-            case 3: return "�����";
-            case 4: return "�������";
-            case 5: return "�������";
-            case 6: return "�������";
-            case 7: return "�����������";
-            default: return "������������ ����� ���";
+            case 1: return "Понедельник";
+            case 2: return "Вторник";
+            case 3: return "Среда";
+            case 4: return "Четверг";
+            case 5: return "Пятница";
+            case 6: return "Суббота";
+            case 7: return "Воскресенье";
+            default: return "Некорректный номер дня";
         }
     }
-    static double Min(double a, double b)
+
+    // 6. Функция, возвращающая меньшее из двух чисел
+    static int Min(int a, int b)
     {
-        return a < b ? a : b;
+        return (a < b) ? a : b;
     }
 }
