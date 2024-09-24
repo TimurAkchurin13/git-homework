@@ -1,37 +1,52 @@
 using System;
-namespace ConsoleApp27
+
+class Program
 {
-    class Program
-    public class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        Console.WriteLine("Куб числа 3: " + Cube(3));
+        Console.WriteLine("Квадрат числа 4: " + Square(4));
+        Console.WriteLine("Сумма 5 и 10: " + Sum(5, 10));
+        Console.WriteLine("Результат (10 - 5) / 2: " + ari(10, 5, 2));
+        Console.WriteLine("День недели для 3: " + akchurin(3));
+        Console.WriteLine("Минимум из 7 и 3: " + Min(7, 3));
+    }
+    static double Cube(double number)
+    {
+        return Math.Pow(number, 3);
+    }
+    static double Square(double number)
+    {
+        return Math.Pow(number, 2);
+    }
+    static double Sum(double a, double b)
+    {
+        return a + b;
+    }
+    static double ari(double a, double b, double c)
+    {
+        if (c == 0)
         {
-
-            int number = 15;
-
-            Console.WriteLine($"Куб числа {number}: {Cube(number)}");
-            Console.WriteLine($"Квадрат числа {number}: {Square(number)}");
-            Console.WriteLine($"Сумма чисел {number} и 3: {Sum(number, 3)}");
-
-            Console.ReadKey();
+            Console.WriteLine("Делить на ноль нельзя.");
         }
-
-
-        static int Cube(int x)
+        return (a - b) / c;
+    }
+    static string akchurin(int day)
+    {
+        switch (day)
         {
-            return x * x * x;
+            case 1: return "Понедельник";
+            case 2: return "Вторник";
+            case 3: return "Среда";
+            case 4: return "Четверг";
+            case 5: return "Пятница";
+            case 6: return "Суббота";
+            case 7: return "Воскресенье";
+            default: return "Некорректный номер дня";
         }
-
-
-        static int Square(int x)
-        {
-            return x * x;
-        }
-
-
-        static int Sum(int x, int y)
-        {
-            return x + y;
-        }
+    }
+    static double Min(double a, double b)
+    {
+        return a < b ? a : b;
     }
 }
